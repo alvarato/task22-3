@@ -28,13 +28,16 @@ public class DAOCientificoProyecto extends DAO{
 		return listaCP;
 	}
 	
-	public void asignar(String dni, String id) throws Exception {
-		String query = "INSERT INTO `asignado_a` (`cientifico`, `proyecto`) VALUES ('"+dni+"', '"+id+"');";
+	public void asignar(String id, String dni) throws Exception {
+		String query = "SELECT * FROM asignado_a WHERE cientifico = '"+dni+"' AND proyecto = '"+id+"';";
+		READ(query);
+		if(!resultado.next()) {
+		query = "INSERT INTO `asignado_a` (`cientifico`, `proyecto`) VALUES ('"+dni+"', '"+id+"');";
+		
+		}else {
+			query = "DELETE FROM asignado_a WHERE cientifico = '"+dni+"' AND proyecto = '"+id+"';";
+		}
 		CUD(query);
 	}
 	
-	public void delete(String dni, String id) throws Exception {
-		String query = "DELETE FROM asignado_a WHERE cientifico = '"+dni+"' AND proyecto = '"+id+"';";
-		CUD(query);
-	}
 }

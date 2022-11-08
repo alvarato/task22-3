@@ -31,6 +31,7 @@ public class Controller implements ActionListener {
 		this.vista.btnEliminarCientifico.addActionListener(this);
 		this.vista.btnCrearProyecto.addActionListener(this);
 		this.vista.btnBorrarProyecto.addActionListener(this);
+		this.vista.btnAsignarProyecto.addActionListener(this);
 	}
 
 	@Override
@@ -42,9 +43,27 @@ public class Controller implements ActionListener {
 		else if(vista.btnEliminarCientifico == e.getSource()) isDeleteCientifico();
 		else if(vista.btnCrearProyecto == e.getSource()) isCreateProyecto();
 		else if(vista.btnBorrarProyecto == e.getSource()) isDeleteProyecto();
+		else if(vista.btnAsignarProyecto == e.getSource()) isAsignarProyecto();
 		
 	}
 	
+	private void isAsignarProyecto() {
+		String id = vista.inputIdAsignar.getText();
+		vista.inputIdAsignar.setText("");
+		String dni = vista.inputDniCientifico.getText();
+		vista.inputDniCientifico.setText("");
+		if(id.equals("") || dni.equals("") || id.length() > 4 ){
+			showMenssage("Faltan Datos o Datos Erroneos");
+		}else {
+			try {
+				System.out.println(id + "-" + dni);
+				cp.asignar(id,dni);
+			} catch (Exception e) {e.printStackTrace();}
+			cp = new CientificoProyecto();
+			isBtnCyP();
+		}
+	}
+
 	private void isDeleteProyecto() {
 		String id = vista.inputIdProyecto.getText();
 		vista.inputIdProyecto.setText("");

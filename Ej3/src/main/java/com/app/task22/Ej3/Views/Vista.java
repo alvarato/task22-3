@@ -61,6 +61,7 @@ public class Vista extends JFrame {
 	public JButton btnAsignarProyecto;
 	public JLabel lblNewLabel_2;
 	public JButton btnQuitarProyecto;
+	public JTextField inputIdAsignar;
 
 	
 	public Vista() {
@@ -91,7 +92,7 @@ public class Vista extends JFrame {
 		content.add(btnProyecto);
 				
 		addDni = new JTextField();
-		addDni.setBounds(39, 298, 181, 46);
+		addDni.setBounds(24, 293, 181, 46);
 		addDni.setColumns(6);
 		
 		addNomyApel = new JTextField();
@@ -120,7 +121,7 @@ public class Vista extends JFrame {
 		  textEliminarCientifico = new JLabel("Para Eliminar ingrese solo el dni");
 		  textEliminarCientifico.setBounds(60, 558, 208, 40);
 		  btnCyP = new JButton("Ver Cientificos/Proyectos");
-		  btnCyP.setBounds(76, 216, 201, 46);
+		  btnCyP.setBounds(76, 238, 201, 46);
 		  content.add(btnCyP);
 		  
 		  tableCientificos= new JTable();
@@ -201,19 +202,22 @@ public class Vista extends JFrame {
 		   lblDnicientifico.setBounds(217, 439, 100, 13);
 		   
 		   
-		   btnAsignarProyecto = new JButton("Asignar Proyecto");
-		   btnAsignarProyecto.setBounds(39, 512, 117, 46);
+		   btnAsignarProyecto = new JButton("Asignar /Quitar Proyecto");
+		   btnAsignarProyecto.setBounds(27, 503, 250, 46);
 		   
 		   
 		   lblNewLabel_2 = new JLabel("Asignar/Quitar   Proyecto a un Cientifico");
 		   lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		   lblNewLabel_2.setForeground(new Color(0, 0, 0));
 		   lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
-		   lblNewLabel_2.setBounds(-7, 291, 310, 24);
+		   lblNewLabel_2.setBounds(7, 315, 310, 24);
 		   btnQuitarProyecto = new JButton("Quitar Proyecto");
 		   btnQuitarProyecto.setBounds(186, 512, 117, 46);
 		 
-			
+		   inputIdAsignar = new JTextField();
+		   inputIdAsignar.setBounds(27, 349, 165, 46);
+		   inputIdAsignar.setColumns(10);
+		   
 		   btnBorrarProyecto = new JButton("Borrar Proyecto(id)");
 		   btnBorrarProyecto.setBounds(27, 552, 206, 49);
 		   
@@ -236,12 +240,11 @@ public class Vista extends JFrame {
 		   content.add(nombresyapellidos);
 		   content.add(btnCrearCientifico);
 		   content.add(addNomyApel);
-		   content.add(addDni);
 		   content.add(textEliminarCientifico);
 		   content.add(btnEliminarCientifico);
 		   content.add(tableCientificos);
-		   
-		  /**/
+		   content.add(addDni);
+		   /**/
 		   //agregamos los items de CyP
 		   content.add(tableCyP);
 		   content.add(txtIdProyecto);
@@ -249,6 +252,8 @@ public class Vista extends JFrame {
 		   content.add(lblDnicientifico);
 		   content.add(btnAsignarProyecto);
 		   content.add(lblNewLabel_2);
+		   content.add(inputIdAsignar);
+
 		  
 		   
 		   //hacemos invisible todos los items
@@ -268,6 +273,8 @@ public class Vista extends JFrame {
 		   lblNewLabel_2.setVisible(true);
 		   inputIdProyecto.setVisible(true);
 		   btnQuitarProyecto.setVisible(true);
+		   inputIdAsignar.setVisible(true);
+		   inputIdProyecto.setVisible(false);
 		   
 	}
 	
@@ -280,6 +287,7 @@ public class Vista extends JFrame {
 		lblNewLabel_2.setVisible(false);
 		inputIdProyecto.setVisible(false);
 		btnQuitarProyecto.setVisible(false);
+		inputIdAsignar.setVisible(false);
 		
 	}
 	//cientificos
@@ -304,7 +312,6 @@ public class Vista extends JFrame {
 		addDni.setVisible(false);
 		textEliminarCientifico.setVisible(false);
 		btnEliminarCientifico.setVisible(false);
-		
 }
 	//proyectos
 	public void SetVisibleProyectos() {
@@ -328,9 +335,9 @@ public class Vista extends JFrame {
 		   lblNewLabel_1.setVisible(false);
 		   lblNewLabel_1_1.setVisible(false);
 		   btnCrearProyecto.setVisible(false);
-		   inputIdProyecto.setVisible(false);
 		   lblNewLabel_3.setVisible(false);
 		   btnBorrarProyecto.setVisible(false);
+		   inputIdProyecto.setVisible(false);
 	}
 	
 	public void setInvisibleAll() {
