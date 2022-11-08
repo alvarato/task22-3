@@ -25,16 +25,14 @@ public class DAOProyecto extends DAO{
 	}
 	
 	public void delete(String id) throws Exception {
-		String query = "DELETE FROM proyecto WHERE id_proyecto = '"+id+"';";
-		System.out.println(id);
+		String query = "DELETE FROM proyecto WHERE id_proyecto = '" + id + "' ;";
 		CUD(query);
-		System.out.println(id);
 	}
 	
 	public void createUpDate(Proyecto proyecto) throws Exception {
 		String query="SELECT * FROM proyecto WHERE id_proyecto = '" +proyecto.getId()+"' ;";
 		READ(query);
-		if(resultado == null) {
+		if(!resultado.next()) {
 		query = "INSERT INTO `proyecto` (`id_proyecto`, `nombre_proyecto`, `horas`) VALUES ('"+proyecto.getId()+"', '"+proyecto.getNombre()+"', '"+proyecto.getHoras()+"');";
 		CUD(query);
 		}else {

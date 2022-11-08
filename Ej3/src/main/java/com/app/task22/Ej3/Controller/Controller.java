@@ -61,7 +61,6 @@ public class Controller implements ActionListener {
 	private void isCreateProyecto() {
 		String id = vista.inputIdProyecto.getText();
 		vista.inputIdProyecto.setText("");
-		showMenssage(id);
 		String nom = vista.inputNombreP.getText();
 		vista.inputNombreP.setText("");
 		int time = 0;

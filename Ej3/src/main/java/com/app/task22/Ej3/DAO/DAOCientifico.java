@@ -29,13 +29,13 @@ public class DAOCientifico extends DAO{
 	public void createUpDate(Cientifico cientifico) throws Exception {
 		String query = "SELECT * FROM cientificos WHERE dni = '" + cientifico.getDni() + "' ;";
 		READ(query);
-		if(resultado == null) {
+		if(!resultado.next()){
 			 query = "INSERT INTO `cientificos` (`dni`, `nom_apels`)"
 						+ " VALUES ('"+cientifico.getDni()+"', '"+cientifico.getNomApels()+"');";
 		}else {
 			query = "UPDATE `cientificos` SET `nom_apels` = '"+cientifico.getNomApels()+"' WHERE (`dni` = '"+cientifico.getDni()+"');";
 		}
-
+	
 		CUD(query);
 	}
 

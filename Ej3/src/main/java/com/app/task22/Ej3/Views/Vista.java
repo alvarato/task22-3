@@ -357,8 +357,6 @@ public class Vista extends JFrame {
 	public void showProyectos(ArrayList<Proyecto> listProyectos) {
 		String[] base = new String[] {"Id","Nombre","Horas"};
 		this.TableProyectos.addRow(base);
-		 base = new String[] {"1","pepe","102"};
-		 this.TableProyectos.addRow(base);
 		for (Proyecto proyecto : listProyectos) {
 			String[] aux = new String[] {String.valueOf(proyecto.getId()),proyecto.getNombre(),
 					String.valueOf(proyecto.getHoras())};
