@@ -24,25 +24,26 @@ public class DAOProyecto extends DAO{
 		return listaProyectos;
 	}
 	
-	public void delete(int id) throws Exception {
-		String query = "DELETE  FROM proyecto WHERE id_proyecto = '" + id + "' ;";
+	public void delete(String id) throws Exception {
+		String query = "DELETE FROM proyecto WHERE id_proyecto = '"+id+"';";
+		System.out.println(id);
 		CUD(query);
+		System.out.println(id);
 	}
 	
-	public void create(Proyecto proyecto) throws Exception {
-		String query = "INSERT INTO `proyecto` (`id_proyecto`, `nombre_proyecto`, `horas`) VALUES ('"+proyecto.getId()+"', '"+proyecto.getNombre()+"', '"+proyecto.getHoras()+"');";
+	public void createUpDate(Proyecto proyecto) throws Exception {
+		String query="SELECT * FROM proyecto WHERE id_proyecto = '" +proyecto.getId()+"' ;";
+		READ(query);
+		if(resultado == null) {
+		query = "INSERT INTO `proyecto` (`id_proyecto`, `nombre_proyecto`, `horas`) VALUES ('"+proyecto.getId()+"', '"+proyecto.getNombre()+"', '"+proyecto.getHoras()+"');";
 		CUD(query);
+		}else {
+			upDate(proyecto);
+		}
 	}
 	
 	public void upDate(Proyecto proyecto) throws Exception {
-		String query ;
-		if(proyecto.getNombre().equals("") && proyecto.getHoras() == 0) {
-			query = "UPDATE `proyecto` SET `nombre_proyecto` = '"+proyecto.getNombre()+"', `horas` = '"+proyecto.getHoras()+"' WHERE (`id_proyecto` = '"+proyecto.getId()+"');";
-		}else if(proyecto.getHoras() == 0 ) {
-			query = "UPDATE `proyecto` SET `nombre_proyecto` = '"+proyecto.getNombre()+"' WHERE (`id_proyecto` = '"+proyecto.getId()+"');";
-		}else {
-			query = "UPDATE `proyecto` SET `horas` = '"+proyecto.getHoras()+"' WHERE (`id_proyecto` = '"+proyecto.getId()+"');";
-		}
+		String query = "UPDATE `proyecto` SET `nombre_proyecto` = '"+proyecto.getNombre()+"', `horas` = '"+proyecto.getHoras()+"' WHERE (`id_proyecto` = '"+proyecto.getId()+"');";
 		CUD(query);
 	}
 }

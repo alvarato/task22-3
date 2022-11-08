@@ -22,18 +22,21 @@ public class DAOCientifico extends DAO{
 	}
 	
 	public void delete(String dni) throws Exception {
-		String query = "DELETE  FROM cientificos WHERE dni = '" + dni + "' ;";
+		String query = "DELETE FROM cientificos WHERE dni = '" + dni + "' ;";
 		CUD(query);
 	}
 	
-	public void create(Cientifico cientifico) throws Exception {
-		String query = "INSERT INTO `cientificos` (`dni`, `nom_apels`)"
-				+ " VALUES ('"+cientifico.getDni()+"', '"+cientifico.getNomApels()+"');";
+	public void createUpDate(Cientifico cientifico) throws Exception {
+		String query = "SELECT * FROM cientificos WHERE dni = '" + cientifico.getDni() + "' ;";
+		READ(query);
+		if(resultado == null) {
+			 query = "INSERT INTO `cientificos` (`dni`, `nom_apels`)"
+						+ " VALUES ('"+cientifico.getDni()+"', '"+cientifico.getNomApels()+"');";
+		}else {
+			query = "UPDATE `cientificos` SET `nom_apels` = '"+cientifico.getNomApels()+"' WHERE (`dni` = '"+cientifico.getDni()+"');";
+		}
+
 		CUD(query);
 	}
-	
-	public void upDate(Cientifico cientifico) throws Exception {
-		String query = "UPDATE `cientificos` SET `nom_apels` = '"+cientifico.getNomApels()+"' WHERE (`dni` = '"+cientifico.getDni()+"');";
-		CUD(query);
-	}
+
 }

@@ -19,7 +19,7 @@ public class DAO {
 	public void connect() {
 		try {
 			Class.forName(DRIVER);
-			String URL = "jdbc:mysql://localhost:3306?useTimezone=true&serverTimezone=UTC";
+			String URL = "jdbc:mysql://127.0.0.1:3306?useTimezone=true&serverTimezone=UTC";
 			conexion = DriverManager.getConnection(URL, USER, PASSWORD);
 			System.out.println("conexion ok");
 		} catch (ClassNotFoundException e) {
@@ -64,7 +64,6 @@ public class DAO {
 	}
 
 	public void READ(String sql) {
-
 		try {
 			connect();
 			statement = conexion.createStatement();
